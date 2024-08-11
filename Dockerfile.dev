@@ -1,0 +1,25 @@
+FROM node:20-alpine
+
+# Crie o diretório de trabalho e defina as permissões
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+
+WORKDIR /home/node/app
+
+# Copie os arquivos package*.json e instale as dependências
+COPY package*.json ./
+
+RUN npm install
+
+# Defina variáveis de ambiente
+ENV CONNECT_STRING_DEV="dev=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.4.11)(PORT = 1521))(CONNECT_DATA =(SID= f3ites)))"
+ENV ORACLE_BASE /usr/lib/instantclient
+ENV LD_LIBRARY_PATH /usr/lib/instantclient
+ENV TNS_ADMIN /usr/lib/instantclient
+ENV ORACLE_HOME /usr/lib/instantclient
+
+# Copie os arquivos da aplicação
+COPY . .
+
+COPY --chown=node:node . .
+
+USER node

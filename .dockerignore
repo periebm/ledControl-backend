@@ -1,0 +1,42 @@
+# Ignora node_modules (será instalado dentro do Docker)
+node_modules
+
+# Ignora diretório de build (será gerado dentro do Docker)
+dist
+build
+
+# Ignora arquivos de configuração específicos do editor
+*.swp
+*~
+.vscode/
+.idea/
+.DS_Store
+
+# Ignora logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignora arquivos de testes
+coverage
+*.lcov
+
+# Ignora dependências de sistema que podem estar presentes no repositório local
+*.lock
+*.bak
+*.tmp
+
+# Ignora arquivos sensíveis ou específicos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Ignora arquivos de controle de versão
+.git
+.gitignore
+
+# Ignora dockerfile e dockerignore (não são necessários dentro da imagem)
+Dockerfile
+.dockerignore

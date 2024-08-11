@@ -1,0 +1,21 @@
+services:
+  development:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./:/home/node/app
+      - ignore:/home/node/app/node_modules/
+    command: npm run start-dev
+    ports:
+      - '3002:3002'
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/16
+
+volumes:
+  ignore:
