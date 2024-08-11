@@ -2,8 +2,8 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Portal do Cliente API',
-    description: 'API do Portal do Cliente da Zen SA',
+    title: 'Garden Backend',
+    description: 'API Garden Backend',
   },
   host: 'localhost:3002',
   securityDefinitions: {

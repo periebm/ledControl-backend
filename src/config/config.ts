@@ -23,9 +23,4 @@ export const envConfig = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   jwt_secret: envVars.JWT_SECRET_KEY,
-  spotify: {
-    client_id: envVars.SPOTIFY_CLIENT_ID,
-    api: envVars.SPOTIFY_API_URL,
-    client_secret: envVars.SPOTIFY_CLIENT_SECRET
-  },
 }

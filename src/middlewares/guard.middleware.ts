@@ -2,10 +2,10 @@ import { Request, Response, NextFunction } from 'express';
 import { ERoles } from '../types/ERoles';
 
 const guardLevel =
-  (niveisRota: ERoles[]) =>
+  (accessLevel: ERoles[]) =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      if (!niveisRota || niveisRota.length === 0) {
+      if (!accessLevel || accessLevel.length === 0) {
         return res.status(401).send({ message: 'Invalid Access' });
       }
 
@@ -13,7 +13,7 @@ const guardLevel =
         return res.status(401).send({ message: 'Invalid Access' });
       }
 
-      const nivelValido = niveisRota.some((value: string) =>
+      const nivelValido = accessLevel.some((value: string) =>
         res.locals.roles.find((el: string) => el === value),
       );
 

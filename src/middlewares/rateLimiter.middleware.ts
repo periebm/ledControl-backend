@@ -11,7 +11,7 @@ const limiter = rateLimit({
       success: false,
       statusCode: HttpStatusCode.TooManyRequests,
       message:
-        'Você excedeu o número máximo de requisições. Tente novamente mais tarde. Se você continuar tendo problemas, por favor, contate nosso time.',
+        'You have exceeded the maximum number of requests. Please try again later. If you continue to experience issues, please contact our team.',
     });
   },
 });
