@@ -7,10 +7,14 @@ class LoginController {
       const loginService = new LoginService();
 
       const response = await loginService.login();
+
       res
-      .cookie('refreshToken', response.refreshToken, { httpOnly: true, sameSite: 'strict' })
-      .header('Authorization', response.accessToken)
-      .send(response.user);
+        .cookie('refreshToken', response.refreshToken, {
+          httpOnly: true,
+          sameSite: 'strict',
+        })
+        .header('Authorization', response.accessToken)
+        .send(response.user);
     } catch (error) {
       console.error(error);
       next(error);
@@ -21,15 +25,17 @@ class LoginController {
     try {
       const refreshToken = req.cookies['refreshToken'];
       if (!refreshToken) {
-        return res.status(401).send('Access Denied. No refresh token provided.');
+        return res
+          .status(401)
+          .send({ message: 'Access Denied. No refresh token provided.' });
       }
 
       const loginService = new LoginService();
 
       const response = await loginService.refresh(refreshToken);
       res
-      .header('Authorization', `Bearer ${response.accessToken}`)
-      .send(response.decoded.user);
+        .header('Authorization', `Bearer ${response.accessToken}`)
+        .send(response.decoded.user);
     } catch (error) {
       console.error(error);
       next(error);

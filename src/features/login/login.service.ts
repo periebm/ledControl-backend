@@ -23,13 +23,14 @@ export class LoginService {
   }
 
   public async refresh(refreshToken: string) {
-
     const decoded: any = jwt.verify(refreshToken, SECRET_KEY);
-    const accessToken = jwt.sign({ user: decoded.user }, SECRET_KEY, { expiresIn: '1h' });
-  
+    const accessToken = jwt.sign({ user: decoded.user }, SECRET_KEY, {
+      expiresIn: '1h',
+    });
+
     return {
       decoded,
-      accessToken
+      accessToken,
     };
   }
 }
