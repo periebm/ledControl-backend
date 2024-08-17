@@ -11,6 +11,7 @@ dotenv.config({ path });
 const envSchema = Joi.object({
   NODE_ENV: Joi.string().required(),
   PORT: Joi.number().default(3000),
+  ESP_ADDRESS: Joi.string().required(),
 }).unknown(true);
 
 const {error, value: envVars} = envSchema.validate(process.env);
@@ -23,4 +24,7 @@ export const envConfig = {
   env: envVars.NODE_ENV,
   port: envVars.PORT,
   jwt_secret: envVars.JWT_SECRET_KEY,
+  esp: {
+    address: envVars.ESP_ADDRESS
+  }
 }

@@ -23,7 +23,7 @@ app.use(errorHandler.handleError);
 const PORT = envConfig.port || 3001;
 
 app.listen(PORT, () => {
-  console.log(`GardenAPI: Up and Running in [${envConfig.env}] mode on port [${PORT}]`);
+  console.log(`ESPProject: Up and Running in [${envConfig.env}] mode on port [${PORT}]`);
 });
 
 process.on('uncaughtException', (err) => {

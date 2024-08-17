@@ -26,7 +26,7 @@ export class HealthCheckService {
       : `Success. Response returned in ${endTimeOracle - startTimeOracle}ms`; */
 
     return {
-      apiName: `garden_api - ${process.env.NODE_ENV} mode`,
+      apiName: `ESPProject - ${process.env.NODE_ENV} mode`,
       uptime,
     };
   }
